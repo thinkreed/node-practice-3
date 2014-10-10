@@ -22,7 +22,6 @@ app.get('/', function (req, res, next) {
 
 			var ep = new eventproxy();
 			
-			//console.log(itemsUrls);
 			topicUrls.forEach (function (topicUrl) {
 				superagent.get(topicUrl)
 					.end(function (err, sres) {
