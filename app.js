@@ -4,7 +4,7 @@ var superagent = require('superagent');
 var eventproxy = require('eventproxy');
 
 var app = express();
-app.listen(5000);
+app.listen(process.env.PORT || 5000);
 
 var cnodeUrl = "https://www.cnodejs.org";
 app.get('/', function (req, res, next) {
