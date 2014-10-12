@@ -4,23 +4,23 @@ var request = require('supertest');
 
 describe('test/test.js', function () {
 
-	it('should return correct json format', function (done) {
-		this.timeout(150000);
-		request(app)
-			.get('/')
-			.end(function (err, res) {
-				res.status.should.equal(200);
-				var topics = JSON.parse(res.text);
-				topics.should.be.an.instanceOf(Array);
+  it('should return correct json format', function (done) {
+    this.timeout(60000); // 60s 应该够了
+    request(app)
+      .get('/')
+      .end(function (err, res) {
+        res.status.should.equal(200);
+        var topics = res.body;
+        topics.should.be.Array;
 
-				topics.forEach(function (topic) {
-					topic.should.have.keys(
-						'title',
-						'href',
-						'comment1'
-					);
-				});
-				done();
-		});
-	});
+        topics.forEach(function (topic) {
+          topic.should.have.keys(
+            'title',
+            'href',
+            'comment1'
+          );
+        });
+        done();
+    });
+  });
 });
